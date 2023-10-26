@@ -14,11 +14,11 @@ def hello_world():
     else:
         myage = request.form['age']
         mygender = request.form['gender']
-        myincome = request.form['income']
-        model = load('app/employment-recommender.joblib')
-        np_arr = np.array([myage, mygender, myincome])
+    
+        model = load('app/phone-recommender.joblib')
+        np_arr = np.array([myage, mygender])
         predictions = model.predict([np_arr])  
         predictions_to_str = str(predictions)
         #return predictions_to_str
-        return render_template('index.html', href2='The type of occupation for you (age:'+str(myage)+' ,gender:'+str(mygender)+',income:'+str(myincome)+') is:'+predictions_to_str)
+        return render_template('index.html', href2='The type of phone for you (age:'+str(myage)+' ,gender:'+str(mygender)+') is:'+predictions_to_str)
 
